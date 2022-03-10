@@ -1,0 +1,39 @@
+package com.project.nominee.util;
+
+import org.springframework.stereotype.Component;
+
+import com.project.nominee.entity.Nominee;
+import com.project.nominee.model.NomineeModel;
+@Component
+public class Conversion {
+	
+	public Nominee modelToEntity(NomineeModel nomineeModel) {
+		Nominee nominee =new Nominee();
+		nominee.setNomineeAdress(nomineeModel.getNomineeAddress());
+		nominee.setNomineeAge(nomineeModel.getNomineeAge());
+		nominee.setNomineeDob(nomineeModel.getNomineeDob());
+		nominee.setNomineeEmail(nomineeModel.getNomineeEmail());
+		nominee.setNomineeGovtid(nomineeModel.getNomineeGovtid());
+		nominee.setNomineeId(nomineeModel.getNomineeId());
+		nominee.setNomineeName(nomineeModel.getNomineeName());
+		nominee.setNomineeNumber(nomineeModel.getNomineeNumber());
+		
+		return nominee;	
+		
+	}
+	
+	public static NomineeModel entityToModel(Nominee nominee) {
+		NomineeModel nomineeModel =new NomineeModel();
+		nomineeModel.setNomineeAdress(nominee.getNomineeAddress());
+		nomineeModel.setNomineeAge(nominee.getNomineeAge());
+		nomineeModel.setNomineeDob(nominee.getNomineeDob());
+		nomineeModel.setNomineeEmail(nominee.getNomineeEmail());
+		nomineeModel.setNomineeGovtid(nominee.getNomineeGovtid());
+		nomineeModel.setNomineeId(nominee.getNomineeId());
+		nomineeModel.setNomineeName(nominee.getNomineeName());
+		nomineeModel.setNomineeNumber(nominee.getNomineeNumber());
+		
+		return nomineeModel;
+	}
+
+}

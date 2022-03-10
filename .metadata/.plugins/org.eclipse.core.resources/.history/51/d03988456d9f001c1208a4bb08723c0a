@@ -1,0 +1,12 @@
+package com.project.nominee.service;
+
+import com.project.nominee.entity.Nominee;
+
+public interface NomineeService {
+	
+	public Nominee saveNominee(Nominee nominee);
+	
+		
+	
+
+}

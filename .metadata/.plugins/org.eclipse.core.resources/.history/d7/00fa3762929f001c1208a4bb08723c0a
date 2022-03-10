@@ -1,0 +1,28 @@
+package com.project.nominee.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.nominee.entity.Nominee;
+import com.project.nominee.model.NomineeModel;
+import com.project.nominee.repository.NomineeRepository;
+import com.project.nominee.util.Conversion;
+
+@Service
+public class NomineeServiceImpl implements NomineeService {
+
+	@Autowired
+	private NomineeRepository nomineeRepository;
+	@Override
+	public NomineeModel saveNominee(NomineeModel nomineeModel) {
+		// TODO Auto-generated method stub
+		Nominee newNominee=nomineeRepository.save(Conversion.modelToEntity(nomineeModel));
+			
+		
+		
+		
+		return Conversion.entityToModel(newNominee);
+	}
+	
+	
+}

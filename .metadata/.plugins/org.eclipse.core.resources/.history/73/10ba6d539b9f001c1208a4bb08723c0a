@@ -1,0 +1,33 @@
+package com.project.nominee.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.nominee.entity.Nominee;
+import com.project.nominee.model.NomineeModel;
+import com.project.nominee.service.NomineeService;
+
+@RestController
+@RequestMapping("/new")
+public class NomineeController {
+	
+	@Autowired
+	private NomineeService nomineeService;
+	
+	@PostMapping("/savenominee")
+	public ResponseEntity<NomineeModel> addnominee(@RequestBody NomineeModel nomineeModel){
+		NomineeModel newNominee=nomineeService.saveNominee(nomineeModel);
+		ResponseEntity<NomineeModel> responseEntity = new ResponseEntity<>(newNominee,HttpStatus.CREATED);
+		
+		return responseEntity;
+
+
+	}
+	
+
+}

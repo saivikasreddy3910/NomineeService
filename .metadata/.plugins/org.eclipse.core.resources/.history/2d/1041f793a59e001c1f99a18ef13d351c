@@ -1,0 +1,11 @@
+server.port:8088
+spring.datasource.url=jdbc:postgresql://localhost:5432/sai
+spring.datasource.username=sai
+spring.datasource.password=sai
+spring.jpa.hibernate.ddl-auto=update
+
+server.servlet.context-path=/nominee
+
+
+spring.application.name=Nominee
+management.endpoints.web.exposure.include=*

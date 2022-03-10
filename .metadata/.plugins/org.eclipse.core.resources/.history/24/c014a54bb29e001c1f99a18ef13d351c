@@ -1,0 +1,96 @@
+package com.project.nominee.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name="nominee_tbl")
+public class Nominee {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="nominee_id")
+	private int nomineeId;
+	
+	@Column(name="nominee_name")
+	private String nomineeName;
+	
+	@Column(name="nominee_age")
+	private int nomineeAge;
+	
+	@Column(name="nominee_dob")
+	private LocalDate nomineeDob;
+	
+	@Column(name="nominee_email")
+	private String nomineeEmail;
+	
+	@Column(name="nominee_number")
+	private String nomineeNumber;
+	
+	@Column(name="nominee_address")
+	private String nomineeAddress;
+	
+	@Column(name="nominee_govtid")
+	private String nomineeGovtid;
+	
+	public int getNomineeId() {
+		return nomineeId;
+	}
+	public void setNomineeId(int nomineeId) {
+		this.nomineeId = nomineeId;
+	}
+	public String getNomineeName() {
+		return nomineeName;
+	}
+	public void setNomineeName(String nomineeName) {
+		this.nomineeName = nomineeName;
+	}
+	public int getNomineeAge() {
+		return nomineeAge;
+	}
+	public void setNomineeAge(int nomineeAge) {
+		this.nomineeAge = nomineeAge;
+	}
+	public LocalDate getNomineeDob() {
+		return nomineeDob;
+	}
+	public void setNomineeDob(LocalDate nomineeDob) {
+		this.nomineeDob = nomineeDob;
+	}
+	public String getNomineeEmail() {
+		return nomineeEmail;
+	}
+	public void setNomineeEmail(String nomineeEmail) {
+		this.nomineeEmail = nomineeEmail;
+	}
+	public String getNomineeNumber() {
+		return nomineeNumber;
+	}
+	public void setNomineeNumber(String nomineeNumber) {
+		this.nomineeNumber = nomineeNumber;
+	}
+	public String getNomineeAddress() {
+		return nomineeAddress;
+	}
+	public void setNomineeAdress(String nomineeAddress) {
+		this.nomineeAddress = nomineeAddress;
+	}
+	public String getNomineeGovtid() {
+		return nomineeGovtid;
+	}
+	public void setNomineeGovtid(String nomineeGovtid) {
+		this.nomineeGovtid = nomineeGovtid;
+	}
+	
+	
+	
+	
+
+}

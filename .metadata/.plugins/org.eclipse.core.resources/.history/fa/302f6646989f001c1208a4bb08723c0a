@@ -1,0 +1,108 @@
+package com.project.nominee;
+
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.project.nominee.entity.Nominee;
+import com.project.nominee.model.NomineeModel;
+import com.project.nominee.repository.NomineeRepository;
+import com.project.nominee.service.NomineeService;
+import com.project.nominee.service.NomineeServiceImpl;
+import com.project.nominee.util.Conversion;
+
+
+
+@SpringBootTest
+public class NomineeServiceTest {
+	@InjectMocks
+	private NomineeService nomineeService = new NomineeServiceImpl();
+	
+	@Mock
+	private NomineeRepository nomineeRepository;
+	
+	@Mock
+	private Conversion conversion;
+	
+	@Test
+    public void testSaveNominee() {
+       
+        Nominee nominee = new Nominee();
+        nominee.setNomineeId(5);
+        nominee.setNomineeName("jasprit bumrah");
+        nominee.setNomineeAge(28);
+        nominee.setNomineeAdress("flat no 112");
+        nominee.setNomineeGovtid("943534451342");
+        nominee.setNomineeEmail("bumrah@gmail.com");
+        nominee.setNomineeDob(null);
+        nominee.setNomineeNumber("7644512325");
+        
+        NomineeModel nomineeModel =new NomineeModel();
+		nomineeModel.setNomineeAdress(nominee.getNomineeAddress());
+		nomineeModel.setNomineeAge(nominee.getNomineeAge());
+		nomineeModel.setNomineeDob(nominee.getNomineeDob());
+		nomineeModel.setNomineeEmail(nominee.getNomineeEmail());
+		nomineeModel.setNomineeGovtid(nominee.getNomineeGovtid());
+		nomineeModel.setNomineeId(nominee.getNomineeId());
+		nomineeModel.setNomineeName(nominee.getNomineeName());
+		nomineeModel.setNomineeNumber(nominee.getNomineeNumber());
+		
+        when(conversion.modelToEntity(nomineeModel)).thenReturn(nominee);
+		
+		when(conversion.entityToModel(nominee)).thenReturn(nomineeModel);
+		
+     	when(nomineeRepository.save(nominee)).thenReturn(nominee);		
+    	
+     	nomineeModel = nomineeService.saveNominee(nomineeModel);		
+		
+		assertEquals(nominee.getNomineeName(), nomineeModel.getNomineeName());
+		
+ 
+    }
+	@Test
+    public void testSaveNominee() {
+       
+        Nominee nominee = new Nominee();
+        nominee.setNomineeId(5);
+        nominee.setNomineeName("jasprit bumrah");
+        nominee.setNomineeAge(28);
+        nominee.setNomineeAdress("flat no 112");
+        nominee.setNomineeGovtid("943534451342");
+        nominee.setNomineeEmail("bumrah@gmail.com");
+        nominee.setNomineeDob(null);
+        nominee.setNomineeNumber("7644512325");
+        
+        NomineeModel nomineeModel =new NomineeModel();
+		nomineeModel.setNomineeAdress(nominee.getNomineeAddress());
+		nomineeModel.setNomineeAge(nominee.getNomineeAge());
+		nomineeModel.setNomineeDob(nominee.getNomineeDob());
+		nomineeModel.setNomineeEmail(nominee.getNomineeEmail());
+		nomineeModel.setNomineeGovtid(nominee.getNomineeGovtid());
+		nomineeModel.setNomineeId(nominee.getNomineeId());
+		nomineeModel.setNomineeName(nominee.getNomineeName());
+		nomineeModel.setNomineeNumber(nominee.getNomineeNumber());
+		
+        when(conversion.modelToEntity(nomineeModel)).thenReturn(nominee);
+		
+		when(conversion.entityToModel(nominee)).thenReturn(nomineeModel);
+		
+     	when(nomineeRepository.save(nominee)).thenReturn(nominee);		
+    	
+     	nomineeModel = nomineeService.saveNominee(nomineeModel);		
+		
+		assertEquals(nominee.getNomineeAge(), nomineeModel.getNomineeAge());
+		
+ 
+    }
+	
+	
+	
+}	

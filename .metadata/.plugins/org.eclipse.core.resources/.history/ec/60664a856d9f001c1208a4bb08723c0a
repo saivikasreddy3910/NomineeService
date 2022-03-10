@@ -1,0 +1,51 @@
+package com.project.nominee;
+
+
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.project.nominee.entity.Nominee;
+import com.project.nominee.repository.NomineeRepository;
+import com.project.nominee.service.NomineeService;
+import com.project.nominee.service.NomineeServiceImpl;
+
+
+
+@SpringBootTest
+public class NomineeServiceTest {
+	@InjectMocks
+	private NomineeService nomineeService = new NomineeServiceImpl();
+	
+	@Mock
+	private NomineeRepository nomineeRepository;
+	
+	@Test
+    public void testSaveNominee() {
+       
+        Nominee nominee = new Nominee();
+        nominee.setNomineeId(5);
+        nominee.setNomineeName("jasprit bumrah");
+        nominee.setNomineeAge(28);
+        nominee.setNomineeAdress("flat no 112");
+        nominee.setNomineeGovtid("943534451342");
+        nominee.setNomineeEmail("bumrah@gmail.com");
+        
+    
+        when(nomineeRepository.save(nominee)).thenReturn(nominee);
+        
+        Nominee newNominee = nomineeService.saveNominee(nominee);
+       
+        //assertEquals(product.getProductName(), newProduct.getProductName());
+       
+        verify(nomineeRepository,times(1)).save(nominee); 
+       
+    }
+	
+}	

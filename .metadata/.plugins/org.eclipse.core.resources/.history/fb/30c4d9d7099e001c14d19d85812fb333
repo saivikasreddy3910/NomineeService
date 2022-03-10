@@ -1,0 +1,5 @@
+package com.project.nominee.entity;
+
+public class Nominee {
+
+}
